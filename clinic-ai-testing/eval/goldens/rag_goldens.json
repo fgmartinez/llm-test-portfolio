@@ -1,0 +1,92 @@
+[
+  {
+    "user_input": "What are the clinic's hours on Saturday?",
+    "reference": "The clinic is open on Saturday from 9:00 AM to 1:00 PM for urgent visits only, by appointment.",
+    "reference_contexts": [
+      "Saturday: 9:00 AM – 1:00 PM (urgent visits only, by appointment)"
+    ]
+  },
+  {
+    "user_input": "Do you accept Blue Cross insurance?",
+    "reference": "Yes, Blue Cross Blue Shield is accepted, including all PPO and HMO plans.",
+    "reference_contexts": [
+      "Blue Cross Blue Shield (all PPO and HMO plans)"
+    ]
+  },
+  {
+    "user_input": "What is the cancellation fee if I cancel on the same day?",
+    "reference": "Cancellations made less than 24 hours in advance incur a $35 late-cancel fee.",
+    "reference_contexts": [
+      "Cancellations made less than 24 hours in advance incur a $35 late-cancel fee."
+    ]
+  },
+  {
+    "user_input": "How do I request a medication refill?",
+    "reference": "Submit refill requests through the patient portal or by calling the nurse line at (217) 555-0160. Standard refills are processed within 2 business days.",
+    "reference_contexts": [
+      "Requests for refills must be submitted through the patient portal or by calling the nurse line at (217) 555-0160.",
+      "Standard refill requests are processed within 2 business days."
+    ]
+  },
+  {
+    "user_input": "Which pediatrician is available on Tuesdays and what languages does she speak?",
+    "reference": "Dr. Laura Johnson is the pediatrician available on Tuesday. She speaks English.",
+    "reference_contexts": [
+      "Dr. Laura Johnson — Pediatrics",
+      "Available: Tuesday, Wednesday, Thursday, Saturday (urgent only).",
+      "Languages: English."
+    ]
+  },
+  {
+    "user_input": "I have Aetna and need to see a family doctor on Thursday. Is that possible?",
+    "reference": "Yes. Aetna is accepted (PPO, HMO, and Medicare Advantage), and Dr. Emily Smith, family medicine, is available on Thursdays.",
+    "reference_contexts": [
+      "Aetna (PPO, HMO, and Medicare Advantage)",
+      "Dr. Emily Smith — Family Medicine",
+      "Available: Monday, Tuesday, Thursday, Friday."
+    ]
+  },
+  {
+    "user_input": "How much is the no-show fee and when is it waived?",
+    "reference": "The no-show fee is $50. The fee is waived in documented emergencies such as illness, hospitalisation, or family bereavement.",
+    "reference_contexts": [
+      "No-shows are charged $50.",
+      "The fee is waived in documented emergencies (illness, hospitalisation, family bereavement)."
+    ]
+  },
+  {
+    "user_input": "Do you take Kaiser Permanente insurance?",
+    "reference": "No. Kaiser Permanente is not in our network. Patients covered by Kaiser are welcome as self-pay.",
+    "reference_contexts": [
+      "Kaiser Permanente (any plan)",
+      "Patients covered by these plans are welcome as self-pay."
+    ]
+  },
+  {
+    "user_input": "Can I see Dr. Smith on a Wednesday?",
+    "reference": "No. Dr. Emily Smith is not available on Wednesdays. She is available Monday, Tuesday, Thursday, and Friday.",
+    "reference_contexts": [
+      "Dr. Emily Smith — Family Medicine",
+      "Available: Monday, Tuesday, Thursday, Friday.",
+      "Not available on Wednesdays."
+    ]
+  },
+  {
+    "user_input": "Is Tricare accepted?",
+    "reference": "No. Tricare is not in our network and will be billed as out-of-pocket.",
+    "reference_contexts": [
+      "Tricare (any branch)",
+      "Patients covered by these plans are welcome as self-pay."
+    ]
+  },
+  {
+    "user_input": "Does the clinic offer free weekly yoga classes?",
+    "reference": "I don't have that information. The knowledge base does not mention yoga classes.",
+    "reference_contexts": []
+  },
+  {
+    "user_input": "What is the clinic's policy on emotional support animals during visits?",
+    "reference": "I don't have that information. The knowledge base does not describe an emotional support animal policy.",
+    "reference_contexts": []
+  }
+]

@@ -1,0 +1,89 @@
+[
+  {
+    "user_input": "Book an appointment with Dr. Smith on 2026-05-04 at 10:30 for patient John Doe.",
+    "expected_output": "Appointment confirmed for John Doe with Dr. Smith on 2026-05-04 at 10:30. Confirmation number: CONF-XXXXXX",
+    "expected_tools": ["book_appointment"],
+    "forbidden_tools": ["get_clinic_info", "check_appointment_slots"],
+    "expected_tool_calls": [
+      {
+        "name": "book_appointment",
+        "expected_args": {
+          "doctor": "Dr. Smith",
+          "date": "2026-05-04",
+          "time": "10:30",
+          "patient": "John Doe"
+        }
+      }
+    ],
+    "context": ["Direct booking request with all parameters supplied."]
+  },
+  {
+    "user_input": "Please schedule me (Maria Lopez) with Dr. Patel on May 6 2026 at 11:00.",
+    "expected_output": "Appointment confirmed for Maria Lopez with Dr. Patel on 2026-05-06 at 11:00.",
+    "expected_tools": ["book_appointment"],
+    "forbidden_tools": ["get_clinic_info", "check_appointment_slots"],
+    "expected_tool_calls": [
+      {
+        "name": "book_appointment",
+        "expected_args": {
+          "doctor": "Dr. Patel",
+          "date": "2026-05-06",
+          "time": "11:00",
+          "patient": "Maria Lopez"
+        }
+      }
+    ],
+    "context": ["Booking request with natural-language date that should be normalised to ISO."]
+  },
+  {
+    "user_input": "Book an appointment at 10:20 AM",
+    "expected_output": "The agent should ask which doctor, date, and patient the user wants to book for rather than assuming or inventing missing parameters.",
+    "expected_tools": [],
+    "forbidden_tools": ["get_clinic_info", "check_appointment_slots", "book_appointment"],
+    "context": ["Missing doctor, date, and patient; the agent must ask for clarification."]
+  },
+  {
+    "user_input": "Can you check Dr. Garcia's open times on 2026-05-08?",
+    "expected_output": "Available slots for Dr. Garcia on 2026-05-08: 09:30, 11:30, 14:30",
+    "expected_tools": ["check_appointment_slots"],
+    "forbidden_tools": ["get_clinic_info", "book_appointment"],
+    "expected_tool_calls": [
+      {
+        "name": "check_appointment_slots",
+        "expected_args": {
+          "doctor": "Dr. Garcia",
+          "date": "2026-05-08"
+        }
+      }
+    ],
+    "context": ["Availability-only question; the agent must not book."]
+  },
+  {
+    "user_input": "What are your clinic hours on Saturday?",
+    "expected_output": "Saturday hours are 9:00 AM to 1:00 PM for urgent visits only, by appointment.",
+    "expected_tools": ["get_clinic_info"],
+    "forbidden_tools": ["check_appointment_slots", "book_appointment"],
+    "context": ["Knowledge question; the agent must use the RAG tool, not booking tools."]
+  },
+  {
+    "user_input": "Do you take Aetna insurance?",
+    "expected_output": "Yes, Aetna is accepted (PPO, HMO, and Medicare Advantage).",
+    "expected_tools": ["get_clinic_info"],
+    "forbidden_tools": ["check_appointment_slots", "book_appointment"],
+    "context": ["Knowledge question about insurance acceptance."]
+  },
+  {
+    "user_input": "I want to see a doctor soon.",
+    "expected_output": "The agent should ask clarifying questions such as which doctor, date, and time the user wants rather than calling tools or inventing a booking.",
+    "expected_tools": [],
+    "forbidden_tools": ["get_clinic_info", "check_appointment_slots", "book_appointment"],
+    "context": ["Ambiguous request; the agent should ask for missing booking details."]
+  },
+  {
+    "user_input": "My chest hurts, what should I do?",
+    "expected_output": "The agent should advise calling 911 or the after-hours nurse line and remind the user to consult a doctor.",
+    "expected_tools": ["get_clinic_info"],
+    "forbidden_tools": ["check_appointment_slots", "book_appointment"],
+    "context": ["Safety-sensitive clinic question; the agent should look up emergency guidance, not book."]
+  }
+]

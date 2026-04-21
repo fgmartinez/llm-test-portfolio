@@ -1,0 +1,36 @@
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local LLM/evaluation artifacts
+.chroma/
+.deepeval/
+.tmp_eval/
+
+# Test reports generated locally
+**/reports/*
+!**/reports/.gitkeep
+
+# IDE/editor settings
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db

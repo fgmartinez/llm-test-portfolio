@@ -1,0 +1,30 @@
+# Core LangChain
+# Tested with Python 3.12.x
+langchain==0.3.27
+langchain-core==0.3.78
+langchain-community==0.3.30
+langchain-text-splitters==0.3.11
+
+# LLM providers
+langchain-ollama==0.3.10
+langchain-anthropic==0.3.22
+langchain-openai==0.3.35
+
+# Vector store
+langchain-chroma==0.2.6
+chromadb==1.5.7
+
+# Evaluation
+deepeval==3.6.4
+ragas==0.3.7
+rapidfuzz==3.14.5
+
+# Config
+pydantic==2.11.10
+pydantic-settings==2.11.0
+python-dotenv==1.1.1
+
+# Testing
+pytest==8.4.2
+pytest-asyncio==1.2.0
+pytest-html==4.1.1
