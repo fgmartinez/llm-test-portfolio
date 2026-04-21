@@ -79,9 +79,10 @@ class Settings(BaseSettings):
     threshold_context_precision: float = 0.70
     threshold_context_relevance: float = 0.70
     threshold_bias: float = 0.3  # lower is better for BiasMetric
+    threshold_medical_disclaimer: float = 0.7
     threshold_hallucination: float = 0.3  # lower is better for HallucinationMetric
-    threshold_geval: float = 0.7
     ragas_metric_timeout_s: float = 30.0
+
 
 
 settings = Settings()

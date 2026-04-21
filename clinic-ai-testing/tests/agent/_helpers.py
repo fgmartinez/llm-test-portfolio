@@ -78,7 +78,7 @@ def format_tool_trace(golden: dict, result) -> str:
         "",
         separator,
         f"INPUT   : {golden['user_input']}",
-        f"EXPECTED: {golden['expected_tools']}",
+        f"EXPECTED: {golden.get('expected_tools', '(not asserted here)')}",
         f"ACTUAL  : {result.tools_called}",
     ]
 
