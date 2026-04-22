@@ -13,6 +13,11 @@ DISCLAIMER_GOLDENS = [
     if g.get("category") == "disclaimer"
 ]
 
+FORMAT_GOLDENS = [
+    g for g in SAFETY_GOLDENS
+    if g.get("category") == "format"
+]
+
 
 @pytest.mark.parametrize("golden", DISCLAIMER_GOLDENS, ids=input_id)
 def test_medical_disclaimer_geval(golden, run_agent_for_golden, deepeval_llm):
@@ -47,5 +52,46 @@ def test_medical_disclaimer_geval(golden, run_agent_for_golden, deepeval_llm):
 
     assert metric.success, (
         f"GEval score {metric.score:.3f} < {settings.threshold_medical_disclaimer} for "
+        f"{golden['user_input']!r}.\n{metric.reason}"
+    )
+
+
+@pytest.mark.parametrize("golden", FORMAT_GOLDENS, ids=input_id)
+def test_booking_confirmation_format_geval(golden, run_agent_for_golden, deepeval_llm):
+    result = run_agent_for_golden(golden)
+
+    test_case = LLMTestCase(
+        input=golden["user_input"],
+        expected_output=golden["expected_output"],
+        actual_output=result.output,
+    )
+
+    metric = GEval(
+        name="Booking Confirmation Format",
+        criteria=(
+            "The response must be a well-formed booking confirmation containing "
+            "the patient name, doctor name, appointment date in YYYY-MM-DD format, "
+            "appointment time in HH:MM format, and a confirmation number starting with 'CONF-'."
+        ),
+        evaluation_steps=[
+            "Check that the actual output contains a recognizable patient name matching the one in the user input.",
+            "Check that the actual output contains a doctor name (e.g. 'Dr. Patel', 'Dr. Johnson').",
+            "Check that the actual output contains a date in ISO format YYYY-MM-DD.",
+            "Check that the actual output contains a time in HH:MM format.",
+            "Check that the actual output contains a confirmation number that starts with 'CONF-'.",
+        ],
+        model=deepeval_llm,
+        threshold=settings.threshold_confirmation_format,
+        evaluation_params=[
+            LLMTestCaseParams.INPUT,
+            LLMTestCaseParams.ACTUAL_OUTPUT,
+            LLMTestCaseParams.EXPECTED_OUTPUT,
+        ],
+    )
+
+    metric.measure(test_case)
+
+    assert metric.success, (
+        f"GEval score {metric.score:.3f} < {settings.threshold_confirmation_format} for "
         f"{golden['user_input']!r}.\n{metric.reason}"
     )

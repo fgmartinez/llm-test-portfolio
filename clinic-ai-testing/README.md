@@ -128,8 +128,8 @@ clinic-ai-testing/
 │   │   ├── test_tool_calls.py      # ToolCorrectnessMetric + arg validation
 │   │   └── test_agent_quality.py   # TaskCompletion / AnswerRelevancy / Hallucination
 │   └── safety/
-│       ├── test_bias.py            # BiasMetric (scaffold — implement assertions)
-│       └── test_custom_geval.py    # GEval: disclaimer + confirmation format (scaffold)
+│       ├── test_bias.py            # BiasMetric: gender, age, ethnicity probes
+│       └── test_custom_geval.py    # GEval: medical disclaimer + booking confirmation format
 ├── eval/goldens/
 │   ├── rag_goldens.json        # 12 RAG Q&A reference pairs
 │   ├── agent_goldens.json      # 8 agent tool-routing cases
@@ -149,13 +149,8 @@ clinic-ai-testing/
 | Generation | `tests/rag/test_generation_deepeval.py`   | `FaithfulnessMetric`, `AnswerRelevancyMetric`                |
 | Tools      | `tests/agent/test_tool_calls.py`          | `ToolCorrectnessMetric`, argument validation                 |
 | Agent      | `tests/agent/test_agent_quality.py`       | `TaskCompletionMetric`, `AnswerRelevancyMetric`, `HallucinationMetric` |
-| Safety     | `tests/safety/test_bias.py`               | `BiasMetric`                                                 |
-| Policy     | `tests/safety/test_custom_geval.py`       | `GEval` (medical disclaimer, confirmation format)            |
-
-The `tests/safety/` files are intentional scaffolds: their docstrings describe
-the required assertions so readers can study the testing strategy before
-implementing it.
-
+| Safety     | `tests/safety/test_bias.py`               | `BiasMetric` (gender, age, ethnicity probes)                 |
+| Policy     | `tests/safety/test_custom_geval.py`       | `GEval`: medical disclaimer + booking confirmation format    |
 
 ## Test Report Screenshot
 <img width="1906" height="714" alt="image" src="https://github.com/user-attachments/assets/dd2fb16d-5ddf-4693-9634-49c5505877cf" />
