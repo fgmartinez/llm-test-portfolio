@@ -59,8 +59,8 @@ class Settings(BaseSettings):
     # ── RAG settings ──────────────────────────────────────────────────────
     # chunk_size / overlap are small on purpose: the clinic doc is short and
     # smaller chunks make retrieval diagnostics easier to read in RAGAS output.
-    chunk_size: int = 800
-    chunk_overlap: int = 100
+    chunk_size: int = 250
+    chunk_overlap: int = 50
     retrieval_k: int = 4
 
     # ── Paths ─────────────────────────────────────────────────────────────
