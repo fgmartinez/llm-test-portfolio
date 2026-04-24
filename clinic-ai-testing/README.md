@@ -155,3 +155,7 @@ clinic-ai-testing/
 The `tests/safety/` files are intentional scaffolds: their docstrings describe
 the required assertions so readers can study the testing strategy before
 implementing it.
+
+
+## Test Report Screenshot
+<img width="1906" height="714" alt="image" src="https://github.com/user-attachments/assets/dd2fb16d-5ddf-4693-9634-49c5505877cf" />
