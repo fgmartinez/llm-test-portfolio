@@ -61,7 +61,7 @@ class Settings(BaseSettings):
     # smaller chunks make retrieval diagnostics easier to read in RAGAS output.
     chunk_size: int = 800
     chunk_overlap: int = 100
-    retrieval_k: int = 1
+    retrieval_k: int = 4
 
     # ── Paths ─────────────────────────────────────────────────────────────
     knowledge_file: Path = PROJECT_ROOT / "data" / "clinic_knowledge.md"
