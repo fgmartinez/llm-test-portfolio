@@ -56,7 +56,8 @@ def pytest_configure(config):
     metadata = config.stash[metadata_key]
     metadata["Project"] = "Clinic AI Testing"
     metadata["LLM Provider"] = settings.llm_provider
-    metadata["Ollama Model"] = settings.ollama_model
+    metadata["Ollama Agent Model"] = settings.ollama_model
+    metadata["Ollama Evaluator Model"] = settings.ollama_evaluator_model
     metadata["Agent Goldens"] = str(len(AGENT_GOLDENS))
     metadata["RAG Goldens"] = str(len(RAG_GOLDENS))
     metadata["Safety Goldens"] = str(len(SAFETY_GOLDENS))
@@ -137,9 +138,12 @@ def deepeval_llm():
     ``AnswerRelevancyMetric``, ``BiasMetric``, ``TaskCompletionMetric``,
     ``HallucinationMetric``, and ``GEval`` to run all evaluations locally
     through Ollama without requiring an OpenAI API key.
+
+    This intentionally uses ``OLLAMA_EVALUATOR_MODEL`` rather than the
+    application model so agent quality can be judged by a different local LLM.
     """
     return OllamaModel(
-        model=settings.ollama_model,
+        model=settings.ollama_evaluator_model,
         base_url=settings.ollama_base_url,
         temperature=0,
     )

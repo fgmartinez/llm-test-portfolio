@@ -3,7 +3,7 @@
     "user_input": "What are the clinic's hours on Saturday?",
     "reference": "The clinic is open on Saturday from 9:00 AM to 1:00 PM for urgent visits only, by appointment.",
     "reference_contexts": [
-      "Saturday: 9:00 AM – 1:00 PM (urgent visits only, by appointment)"
+      "9:00 AM – 1:00 PM (urgent visits only, by appointment)"
     ]
   },
   {

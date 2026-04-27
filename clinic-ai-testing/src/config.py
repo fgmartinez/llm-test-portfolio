@@ -43,7 +43,8 @@ class Settings(BaseSettings):
     llm_provider: Literal["ollama", "anthropic", "openai"] = "ollama"
 
     # ── Ollama (local, always available) ──────────────────────────────────
-    ollama_model: str = "llama3.2"
+    ollama_model: str = "qwen2.5:latest"
+    ollama_evaluator_model: str = "deepseek-r1:7b"
     ollama_embedding_model: str = "nomic-embed-text"
     ollama_base_url: str = "http://localhost:11434"
 
@@ -59,9 +60,9 @@ class Settings(BaseSettings):
     # ── RAG settings ──────────────────────────────────────────────────────
     # chunk_size / overlap are small on purpose: the clinic doc is short and
     # smaller chunks make retrieval diagnostics easier to read in RAGAS output.
-    chunk_size: int = 250
+    chunk_size: int = 700
     chunk_overlap: int = 50
-    retrieval_k: int = 4
+    retrieval_k: int = 3
 
     # ── Paths ─────────────────────────────────────────────────────────────
     knowledge_file: Path = PROJECT_ROOT / "data" / "clinic_knowledge.md"

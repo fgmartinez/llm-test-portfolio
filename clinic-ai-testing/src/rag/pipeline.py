@@ -20,6 +20,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from src.config import settings
 from src.llm.factory import get_llm
 from src.rag.ingest import load_vector_store
+from src.rag.retrieval import HybridRetriever
 
 
 @dataclass
@@ -54,9 +55,7 @@ class RAGPipeline:
         # Lazy-load the persisted Chroma store so the pipeline can be constructed
         # inside test fixtures even if ingestion hasn't been re-run.
         self._store = load_vector_store()
-        self._retriever = self._store.as_retriever(
-            search_kwargs={"k": settings.retrieval_k}
-        )
+        self._retriever = HybridRetriever(self._store)
         self._llm = get_llm()
 
     def retrieve_contexts(self, question: str) -> list[str]:

@@ -45,10 +45,11 @@ cp .env.example .env
 ### Install Ollama (default provider)
 
 1. Download and install Ollama: https://ollama.com/download
-2. Pull the two models used by this project:
+2. Pull the three local models used by this project:
 
 ```bash
-ollama pull llama3.2
+ollama pull qwen2.5
+ollama pull deepseek-r1:7b
 ollama pull nomic-embed-text
 ```
 
